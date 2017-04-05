@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.StringUtils;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -76,6 +78,42 @@ public class Main {
             System.out.println("ERROR, all characters should have been changed to be lower case");
         } else{
             System.out.println("SUCCESS, all characters are all lower case");
+        }
+
+        //test isBlank
+        if(StringUtils.isBlank(sample)){
+            System.out.println("ERROR, sample is not blank");
+        } else {
+            System.out.println("SUCCESS, sample is not blank");
+        }
+        if(StringUtils.isBlank("     ")){
+            System.out.println("SUCCESS, parameter is blank");
+        } else {
+            System.out.println("ERROR, parameter should be blank");
+        }
+
+        //test equalsIgnoreCase
+        if(StringUtils.equalsIgnoreCase(sample,"KnowlEdGe iS knoWinG A tOmato iS a FRUIT")){
+            System.out.println("SUCCESS, sample and parameter are equal ignoring case");
+        } else {
+            System.out.println("ERROR, sample and parameter should be equal ignoring case");
+        }
+        if(StringUtils.equalsIgnoreCase(sample,"KNOWLEDGE is knowing a tomato is a fruit.")) {
+            System.out.println("ERROR, sample and parameter are not equal regardless of case");
+        } else {
+            System.out.println("SUCCESS, sample and parameter are not equal regardless of case");
+        }
+
+        //test leftPad(str,size,padChar)
+        if(StringUtils.leftPad(sample,45,'a').equals("aaaaaKnowledge is knowing a tomato is a fruit")){
+            System.out.println("SUCCESS, string padded with five a's");
+        } else {
+            System.out.println("ERROR, string not padded with five a's");
+        }
+        if(StringUtils.leftPad(sample,45,'a').equals("aaaaKnowledge is knowing a tomato is a fruit")){
+            System.out.println("ERROR, string padded with four a's");
+        } else {
+            System.out.println("SUCCESS, string padded with five a's");
         }
     }
 }
